@@ -10,7 +10,6 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.unitedlands.skills.events.SkillActivateEvent;
 
 import java.util.ArrayList;
@@ -101,7 +100,7 @@ public class ActiveSkill extends Skill {
         masterworkSet.add(CustomStack.getInstance("masterwork:masterwork_shovel").getItemStack());
         masterworkSet.add(CustomStack.getInstance("masterwork:masterwork_hoe").getItemStack());
 
-        List<@Nullable ItemStack> inventoryContents = Arrays.stream(player.getInventory().getContents()).toList();
+        List<ItemStack> inventoryContents = Arrays.stream(player.getInventory().getContents()).toList();
         return new HashSet<>(inventoryContents).containsAll(masterworkSet);
     }
 

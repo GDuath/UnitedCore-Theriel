@@ -37,10 +37,10 @@ public class HorseListener implements Listener {
         if (!event.hasChangedBlock()) return;
         if (!player.isInsideVehicle()) return;
         if (player.getVehicle() instanceof Horse horse) {
-            double horseSpeed = horse.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).getBaseValue();
+            double horseSpeed = horse.getAttribute(Attribute.MOVEMENT_SPEED).getBaseValue();
             double newHorseSpeed = getBoostedHorseSpeed(horse);
             if (horseSpeed != newHorseSpeed) {
-                horse.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(newHorseSpeed);
+                horse.getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(newHorseSpeed);
             }
         }
     }
@@ -72,7 +72,7 @@ public class HorseListener implements Listener {
         NamespacedKey speedKey = getSpeedKey();
         PersistentDataContainer container = horse.getPersistentDataContainer();
         if (!hasSpeedKey(horse)) {
-            container.set(speedKey, PersistentDataType.DOUBLE, horse.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).getBaseValue());
+            container.set(speedKey, PersistentDataType.DOUBLE, horse.getAttribute(Attribute.MOVEMENT_SPEED).getBaseValue());
         }
     }
 

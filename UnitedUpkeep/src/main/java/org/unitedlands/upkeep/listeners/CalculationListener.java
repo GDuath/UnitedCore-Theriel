@@ -9,7 +9,6 @@ import org.bukkit.event.Listener;
 import org.unitedlands.upkeep.UnitedUpkeep;
 import org.unitedlands.upkeep.calculators.NationUpkeepCalculator;
 import org.unitedlands.upkeep.calculators.TownUpkeepCalculator;
-import org.unitedlands.upkeep.util.TerritorialMetaController;
 
 public class CalculationListener implements Listener {
     private final UnitedUpkeep unitedUpkeep;

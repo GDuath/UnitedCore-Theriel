@@ -66,7 +66,7 @@ public class MinerAbilities implements Listener {
         ActiveSkill frenzy = new ActiveSkill(player, SkillType.FRENZY, cooldowns, durations);
         if (canActivate(event, "PICKAXE", frenzy)) {
             if (frenzy.activate()) {
-                player.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, frenzy.getDuration() * 20, 3));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.HASTE, frenzy.getDuration() * 20, 3));
                 frenzyIsActive = true;
                 unitedSkills.getServer().getScheduler().runTaskLater(unitedSkills, () -> frenzyIsActive = false,
                         frenzy.getDuration() * 20L);
@@ -151,8 +151,8 @@ public class MinerAbilities implements Listener {
 
     private void damagePickaxe(ItemStack pickaxe, int damage) {
         Damageable meta = (Damageable) pickaxe.getItemMeta();
-        if (pickaxe.containsEnchantment(Enchantment.DURABILITY)) {
-            int level = pickaxe.getEnchantmentLevel(Enchantment.DURABILITY);
+        if (pickaxe.containsEnchantment(Enchantment.UNBREAKING)) {
+            int level = pickaxe.getEnchantmentLevel(Enchantment.UNBREAKING);
             damage = (int) (damage * (1 - (0.2 * level)));
         }
         meta.setDamage(meta.getDamage() + damage);

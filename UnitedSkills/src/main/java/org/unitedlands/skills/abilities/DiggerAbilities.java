@@ -228,7 +228,7 @@ public class DiggerAbilities implements Listener {
     }
 
     private void spawnBlockBreakParticles(Block block) {
-        ParticleBuilder particle = new ParticleBuilder(Particle.BLOCK_CRACK);
+        ParticleBuilder particle = new ParticleBuilder(Particle.BLOCK_CRUMBLE);
         particle.data(block.getBlockData())
                 .location(block.getLocation())
                 .count(100)

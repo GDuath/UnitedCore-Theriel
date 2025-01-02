@@ -85,7 +85,7 @@ public class FarmerAbilities implements Listener {
         Ageable crop = (Ageable) block.getBlockData();
         CustomStack customStack = CustomStack.byItemStack(event.getItemInHand());
 
-        ParticleBuilder greenParticle = new ParticleBuilder(Particle.VILLAGER_HAPPY);
+        ParticleBuilder greenParticle = new ParticleBuilder(Particle.HAPPY_VILLAGER);
         greenParticle.count(25).location(block.getLocation().toCenterLocation());
 
         if (fertiliser.isSuccessful()) {
@@ -132,7 +132,7 @@ public class FarmerAbilities implements Listener {
             Location location = entity.getLocation();
             sendMushroomParticles(entity.getLocation());
             entity.remove();
-            entity.getWorld().spawnEntity(location, EntityType.MUSHROOM_COW);
+            entity.getWorld().spawnEntity(location, EntityType.MOOSHROOM);
             runFungalSkill(offhandItem, handItem);
         }
     }
@@ -181,7 +181,7 @@ public class FarmerAbilities implements Listener {
     }
 
     private void sendMushroomParticles(Location location) {
-        ParticleBuilder mushroomParticles = new ParticleBuilder(Particle.BLOCK_CRACK);
+        ParticleBuilder mushroomParticles = new ParticleBuilder(Particle.BLOCK_CRUMBLE);
         BlockData mushroomData = Material.RED_MUSHROOM.createBlockData();
         mushroomParticles
                 .data(mushroomData)

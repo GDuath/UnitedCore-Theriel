@@ -26,7 +26,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.potion.PotionType;
 import org.unitedlands.skills.UnitedSkills;
 import org.unitedlands.skills.Utils;
 import org.unitedlands.skills.skill.ActiveSkill;
@@ -206,8 +205,8 @@ public class HunterAbilities implements Listener {
         Skill retriever = new Skill(player, SkillType.RETRIEVER);
         if (retriever.getLevel() != 0) {
             ItemStack bow = player.getInventory().getItemInMainHand();
-            if (bow.containsEnchantment(Enchantment.ARROW_INFINITE)) {
-                if (arrow.getBasePotionData().getType() != PotionType.UNCRAFTABLE) {
+            if (bow.containsEnchantment(Enchantment.INFINITY)) {
+                if (!arrow.hasCustomEffects()) {
                     if (retriever.isSuccessful()) {
                         arrow.setMetadata("retrieved", new FixedMetadataValue(unitedSkills, true));
                     }
@@ -297,7 +296,7 @@ public class HunterAbilities implements Listener {
         if (stun.isSuccessful()) {
             stun.notifyActivation();
             int level = stun.getLevel();
-            victim.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, level * 20, 10));
+            victim.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, level * 20, 10));
         }
         Skill criticalHit = new Skill(player, SkillType.CRITICAL_HIT);
         if (criticalHit.isSuccessful()) {
@@ -335,7 +334,7 @@ public class HunterAbilities implements Listener {
     }
 
     private void spawnArrowTrail(Arrow arrow, Material material) {
-        ParticleBuilder particle = new ParticleBuilder(Particle.BLOCK_CRACK);
+        ParticleBuilder particle = new ParticleBuilder(Particle.BLOCK_CRUMBLE);
         BlockData blockData = material.createBlockData();
         Bukkit.getScheduler().runTaskTimer(unitedSkills, task -> {
             if (arrow.isDead()) {
@@ -349,7 +348,7 @@ public class HunterAbilities implements Listener {
     }
 
     private void spawnBleedingParticles(Entity entity, int amount) {
-        ParticleBuilder particle = new ParticleBuilder(Particle.BLOCK_CRACK);
+        ParticleBuilder particle = new ParticleBuilder(Particle.BLOCK_CRUMBLE);
         BlockData redWoolData = Material.RED_WOOL.createBlockData();
         particle.data(redWoolData);
         particle.count(amount);

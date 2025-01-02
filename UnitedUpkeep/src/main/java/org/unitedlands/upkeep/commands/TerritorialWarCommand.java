@@ -6,7 +6,6 @@ import com.palmergames.bukkit.towny.TownyCommandAddonAPI.CommandType;
 import com.palmergames.bukkit.towny.TownyMessaging;
 import com.palmergames.bukkit.towny.command.BaseCommand;
 import com.palmergames.bukkit.towny.object.AddonCommand;
-import com.palmergames.bukkit.towny.object.Nation;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -22,7 +21,6 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.unitedlands.upkeep.UnitedUpkeep;
-import org.unitedlands.upkeep.util.NationMetaController;
 import org.unitedlands.upkeep.util.TerritorialMetaController;
 
 

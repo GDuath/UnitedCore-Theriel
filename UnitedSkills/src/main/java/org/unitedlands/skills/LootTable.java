@@ -58,7 +58,7 @@ public class LootTable {
             assert itemSection != null;
             @NotNull
             List<String> itemBiomes = itemSection.getStringList("biomes");
-            if (!itemBiomes.contains(biome.name())) {
+            if (!itemBiomes.contains(biome.getKey().getKey())) {
                 continue;
             }
             if (isSuccessful(itemSection)) {

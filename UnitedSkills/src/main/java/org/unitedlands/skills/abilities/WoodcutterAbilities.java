@@ -4,7 +4,6 @@ import com.destroystokyo.paper.ParticleBuilder;
 import com.gamingmesh.jobs.Jobs;
 import com.gamingmesh.jobs.actions.BlockActionInfo;
 import com.gamingmesh.jobs.container.ActionType;
-import com.palmergames.bukkit.towny.TownyAPI;
 import com.palmergames.bukkit.towny.object.TownyPermission;
 import com.palmergames.bukkit.towny.utils.PlayerCacheUtil;
 import com.craftaro.ultimatetimber.UltimateTimber;
@@ -99,7 +98,7 @@ public class WoodcutterAbilities implements Listener {
                 } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
                     throw new RuntimeException(e);
                 }
-                ParticleBuilder greenParticle = new ParticleBuilder(Particle.VILLAGER_HAPPY);
+                ParticleBuilder greenParticle = new ParticleBuilder(Particle.HAPPY_VILLAGER);
                 greenParticle.count(25)
                         .location(tree.getDetectedTreeBlocks().getInitialLogBlock().getLocation().toCenterLocation())
                         .spawn();
