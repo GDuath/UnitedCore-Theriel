@@ -18,6 +18,7 @@ import org.bukkit.Particle;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -106,13 +107,17 @@ public class WoodcutterAbilities implements Listener {
         }
     }
 
-    @EventHandler
+    @EventHandler (priority = EventPriority.LOW)
     public void onPreciseCut(BlockBreakEvent event) {
         player = event.getPlayer();
+
+        if (event.isCancelled())
+            return;
+
         if (!isWoodCutter()) {
             return;
         }
-        Skill precisionCutting = new Skill(player, SkillType.PRECISION_CUTTING);
+
         Material material = event.getBlock().getType();
         if (!material.toString().contains("LOG")) {
             return;
@@ -121,12 +126,14 @@ public class WoodcutterAbilities implements Listener {
             return;
         }
 
-        // Perform towny check to see if player is allowed to break blocks in that location
+        // Perform towny check to see if player is allowed to break blocks in that
+        // location
         if (!PlayerCacheUtil.getCachePermission(player, event.getBlock().getLocation(), event.getBlock().getType(),
                 TownyPermission.ActionType.DESTROY)) {
             return;
         }
 
+        Skill precisionCutting = new Skill(player, SkillType.PRECISION_CUTTING);
         if (precisionCutting.isSuccessful()) {
             multiplyItem(player, new ItemStack(material), 2);
         }
