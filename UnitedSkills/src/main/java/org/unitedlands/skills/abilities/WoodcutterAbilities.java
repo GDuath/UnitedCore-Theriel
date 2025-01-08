@@ -110,10 +110,10 @@ public class WoodcutterAbilities implements Listener {
     @EventHandler (priority = EventPriority.LOW)
     public void onPreciseCut(BlockBreakEvent event) {
         player = event.getPlayer();
-
         if (event.isCancelled())
+        {
             return;
-
+        }
         if (!isWoodCutter()) {
             return;
         }
